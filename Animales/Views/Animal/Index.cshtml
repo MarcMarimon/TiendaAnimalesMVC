@@ -1,0 +1,54 @@
+﻿@using Animales.Models
+@model List<Animal>
+
+@{
+    ViewBag.Title = "Lista de Animales";
+}
+
+<h2>Lista de Animales</h2>
+
+<p>
+    @Html.ActionLink("Crear Animal", "Create", "Animal", null, new { @class = "btn btn-primary" })
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Raza)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].FechaNacimiento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].TipoAnimal.Descripcion)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Animal item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Raza)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaNacimiento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TipoAnimal.Descripcion)
+                </td>
+                <td>
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
